@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="product_category_form_view_inherit_ref_gen" model="ir.ui.view">
+        <field name="name">product.category.form.view.inherit.ref.gen</field>
+        <field name="model">product.category</field>
+        <field name="inherit_id" ref="product.product_category_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//sheet" position="before">
+                <header>
+                    <button name="action_generate_category_references" string="Generate Category References" type="object" class="btn-primary" help="Generate internal reference for all products in this category"/>
+                </header>
+            </xpath>
+            <xpath expr="//group[@name='first']" position="after">
+                <group string="Internal Reference Generator Settings" name="ref_gen_settings">
+                    <group>
+                        <field name="use_category_sequence"/>
+                        <field name="sequence_id" invisible="not use_category_sequence" required="use_category_sequence"/>
+                    </group>
+                    <group invisible="not use_category_sequence">
+                        <field name="code_prefix" placeholder="e.g. ELEC-"/>
+                        <field name="code_suffix" placeholder="e.g. -PRD"/>
+                    </group>
+                </group>
+            </xpath>
+        </field>
+    </record>
+</odoo>
