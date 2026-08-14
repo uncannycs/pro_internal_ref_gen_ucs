@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_pro_internal_ref_gen_wizard_user,pro.internal.ref.gen.wizard.user,model_pro_internal_ref_gen_wizard,stock.group_stock_user,1,1,1,1
+access_pro_internal_ref_gen_wizard_manager,pro.internal.ref.gen.wizard.manager,model_pro_internal_ref_gen_wizard,stock.group_stock_manager,1,1,1,1
