@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Wizard Form View -->
+    <record id="pro_internal_ref_gen_wizard_view_form" model="ir.ui.view">
+        <field name="name">pro.internal.ref.gen.wizard.view.form</field>
+        <field name="model">pro.internal.ref.gen.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Generate Product Internal References">
+                <sheet>
+                    <group>
+                        <group string="Selection Criteria">
+                            <field name="category_ids" widget="many2many_tags" placeholder="All Categories"/>
+                            <field name="product_ids" widget="many2many_tags" placeholder="All Products"/>
+                        </group>
+                        <group string="Generation Options">
+                            <field name="only_missing"/>
+                            <field name="overwrite_existing"/>
+                        </group>
+                    </group>
+                </sheet>
+                <footer>
+                    <button name="action_generate_references" string="Generate References" type="object" class="btn-primary"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <!-- Wizard Action Window & Context Binding -->
+    <record id="action_pro_internal_ref_gen_wizard" model="ir.actions.act_window">
+        <field name="name">Generate Product Internal References</field>
+        <field name="res_model">pro.internal.ref.gen.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+        <field name="binding_model_id" ref="product.model_product_template"/>
+        <field name="binding_view_types">list,form</field>
+    </record>
+
+    <!-- Menu Item in Inventory Operations/Products -->
+    <menuitem id="menu_pro_internal_ref_gen_wizard"
+              name="Generate Product References"
+              action="action_pro_internal_ref_gen_wizard"
+              parent="stock.menu_stock_inventory_control"
+              sequence="100"/>
+</odoo>

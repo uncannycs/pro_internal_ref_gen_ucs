@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_company_form_inherit_ref_gen" model="ir.ui.view">
+        <field name="name">res.company.form.view.inherit.ref.gen</field>
+        <field name="model">res.company</field>
+        <field name="inherit_id" ref="base.view_company_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//page[@name='general_info']" position="after">
+                <page string="Internal Reference Generator" name="internal_ref_gen">
+                    <group>
+                        <group string="Configuration">
+                            <field name="ref_sequence_id" string="Internal Reference Sequence"/>
+                            <field name="auto_generate_ref" string="Auto Create Internal Reference on Product Creation"/>
+                            <field name="ref_generation_policy" invisible="not auto_generate_ref"/>
+                            <field name="ref_variant_pattern" invisible="not auto_generate_ref"/>
+                        </group>
+                        <group string="Options">
+                            <field name="ref_override_existing" invisible="not auto_generate_ref"/>
+                        </group>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>
